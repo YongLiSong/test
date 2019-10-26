@@ -1,66 +1,49 @@
 require("./main.css");
 require("./index.html");
 
-var data = [
-	{
-		name: "苹果",
-		danjia: 9
-	},
-	{
-		name: "香蕉",
-		danjia: 5
-	},
-	{
-		name: "榴莲",
-		danjia: 18
-	},
-	{
-		name: "雪梨",
-		danjia: 6
-	},
-	{
-		name: "西瓜",
-		danjia: 10
-	},
-	{
-		name: "火龙果",
-		danjia: 8
-	},
-	{
-		name: "荔枝",
-		danjia: 11
-	},
-	{
-		name: "哈密瓜",
-		danjia: 8
+var btnred = document.querySelector("#box #changecolor .btnred");//红键
+var btngreen = document.querySelector("#box #changecolor .btngreen");//绿键
+var btnblue = document.querySelector("#box #changecolor .btnblue");//蓝键
+var showcolor = document.querySelector("#showcolor");//颜色显示框；
+
+function rgb (a){//创建一个方法，用来改变颜色；
+	a.onmousedown = function (evt) {
+		var downX = evt.clientX
+		var downLeft = this.offsetLeft
+		window.onmousemove = function (evt) {
+			var pointerX = evt.clientX - downX
+			var bL = downLeft + pointerX;
+			if (bL < 0) {
+				bL = 0
+			} else if (bL > 255) {
+				bL = 255
+			} else {
+				//nothing
+			}
+			a.style.left = bL + "px";
+			var rText = bL
+			var r = btnred.offsetLeft;
+			var g = btngreen.offsetLeft;
+			var b = btnblue.offsetLeft;
+
+			showcolor.style.backgroundColor = "rgb(" + r +","+ g +", "+ b +")"
+		}
+		window.onmouseup = function () {
+			window.onmousemove = null;
+			window.onmouseup = null;
+		}
 	}
-];
-var divs = document.querySelectorAll("#goods div");
-console.log(divs);
-for (var i = 0; i < data.length; i++) {
-	var text = document.createTextNode(data[i].name);
-	divs[i].appendChild(text);
 }
-// var div1 = document.getElementById("goods");
-// for (var i = 0; i < data.length; i++) {
-// 	var div2 = document.createElement("div");
-// 	//名称
-// 	var nodeP = document.createElement("b");
-// 	var textNode = document.createTextNode(data[i].name);
-// 	nodeP.appendChild(textNode);
-// 	div2.appendChild(nodeP);
 
-// 	//单价
-// 	var danjia = document.createElement("p");
-// 	var danjiaNode = document.createTextNode("单价：" + data[i].danjia);
-// 	danjia.appendChild(danjiaNode);
-// 	div2.appendChild(danjia);
+//⬇️哪个按钮被点击，就调用改变颜色的函数；
+btnred.onmousedown = function(){
+	rgb(this)
+}
+btngreen.onmousedown = function(){
+	rgb(this)
+}
+btnblue.onmousedown = function(){
+	rgb(this)
+}
 
-// 	//数量
-// 	var num = document.createElement("p");
-// 	var numNode = document.createTextNode("数量：");
-// 	num.appendChild(numNode);
-// 	div2.appendChild(num);
-
-// 	div1.appendChild(div2);
-// }
+//原本我是想遍历，所有的按键，但是遍历完了，出不来东西，就放弃了
