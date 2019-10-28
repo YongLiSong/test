@@ -7,21 +7,25 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
 </head>
+
 <body>
   <div id="box">
-    <div id="changecolor">
-      <div class="scrollred">
-        <p class="btnred">R</p>
-      </div>
-      <div class="scrollgreen">
-        <p class="btngreen">G</p>
-      </div>
-      <div class="scrollblue">
-        <p class="btnblue">B</p>
-      </div>
+    <div class="box1">
+      <dl>
+        <dt class="logo"></dt>
+        <dd class="name">登陆</dd>
+      </dl>
     </div>
-    <div id="showcolor">
-
+    <div class="box2">
+      <input type="text" class="username" placeholder="请输入用户名">
+      <div class="error">
+        <p class="errortext"></p>
+      </div>
+      <input type="password" class="password" placeholder="请输入密码">
+      <div class="error">
+        <p class="errorpass"></p>
+      </div>
+      <button>登陆</button>
     </div>
   </div>
   <script src="/main-build.js"></script>
