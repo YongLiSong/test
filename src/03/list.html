@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        #box {
+            width: 500px;
+            height: 500px;
+        }
+
+        li {
+            /* height: 50px; */
+            width: 100%;
+            background: red;
+            border: 1px solid #000;
+            margin-bottom: 10px;
+        }
+
+        li h3 {
+            height: 50px;
+        }
+
+        .content {
+            background: pink;
+            height: 0;
+            opacity: 0;
+            transition: height 0.4s,opacity 0.5s;
+        }
+
+        .show {
+            height: 100px;
+            opacity: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <ul>
+            <li>
+                <h3>11111</h3>
+                <p class="content">1111111111111111111111111111111111111111 111111111111111111111111111111111111</p>
+            </li>
+            <li>
+                <h3>22222</h3>
+                <p class="content">22222222222222222222222222222222222222 2222222222222222222222222222222222</p>
+            </li>
+            <li>
+                <h3>33333</h3>
+                <p class="content">33333333333333333333333333333333333333 33333333333333333333333333333333333333</p>
+            </li>
+            <li>
+                <h3>44444</h3>
+                <p class="content">44444444444444444444444444444444444444 44444444444444444444444444444444444444</p>
+            </li>
+        </ul>
+    </div>
+    <script>
+        let hs = document.querySelectorAll(`h3`);
+        let content = document.querySelectorAll(`.conetnet`);
+        for (let i = 0; i < hs.length; i++) {
+            hs[i].nth = i;
+            hs[i].onclick = function () {
+                let contents = document.querySelectorAll('.content')
+                var content = document.querySelector(`li:nth-of-type(${i+ 1}) p`);
+                for (let j = 0; j < contents.length; j++) {
+                    contents[j].classList.remove('show')
+                }
+                content.classList.add('show')
+            }
+        }
+    </script>
+</body>
+
+</html>

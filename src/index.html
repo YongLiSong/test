@@ -9,23 +9,41 @@
 </head>
 
 <body>
-  <div id="box">
-    <div class="box1">
-      <dl>
-        <dt class="logo"></dt>
-        <dd class="name">登陆</dd>
-      </dl>
+  <div id="bigbox">
+    <div id="goods">
+      <div class="box">
+        <p class="fruit">香蕉</p>
+        <p>数量：<button class="add">-</button><span class="qty">0</span><button class="cut">+</button></p>
+        <p>单价：5</p>
+        <p class="incar"><button class="putincar">添加到购物车</button></p>
+      </div>
+      <div class="box">
+        <p class="fruit">苹果</p>
+        <p>数量：<button class="add">-</button><span class="qty">0</span><button class="cut">+</button></p>
+        <p>单价：9</p>
+        <p class="incar"><button class="putincar">添加到购物车</button></p>
+      </div>
+      <div class="box">
+        <p class="fruit">雪梨</p>
+        <p>数量：<button class="add">-</button><span class="qty">0</span><button class="cut">+</button></p>
+        <p>单价：6</p>
+        <p class="incar"><button class="putincar">添加到购物车</button></p>
+      </div>
+      <div class="box">
+        <p class="fruit">西瓜</p>
+        <p>数量：<button class="add">-</button><span class="qty">0</span><button class="cut">+</button></p>
+        <p>单价：10</p>
+        <p class="incar"><button class="putincar">添加到购物车</button></p>
+      </div>
+      <div class="box">
+        <p class="fruit">火龙果</p>
+        <p>数量：<button class="add">-</button><span class="qty">0</span><button class="cut">+</button></p>
+        <p>单价：8</p>
+        <p class="incar"><button class="putincar">添加到购物车</button></p>
+      </div>
     </div>
-    <div class="box2">
-      <input type="text" class="username" placeholder="请输入用户名">
-      <div class="error">
-        <p class="errortext"></p>
-      </div>
-      <input type="password" class="password" placeholder="请输入密码">
-      <div class="error">
-        <p class="errorpass"></p>
-      </div>
-      <button>登陆</button>
+    <div id="total">
+      <p>总金额 : <span class="match">0</span><button class="topay">~去结算~</button></p>
     </div>
   </div>
   <script src="/main-build.js"></script>

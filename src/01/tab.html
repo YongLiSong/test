@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            list-style: none;
+        }
+        #box{
+            width: 700px;
+            height: 600px;
+            background: #f1f1f1;
+            position: relative;
+        }
+        li{
+            width: 200px;
+            height: 80px;
+            float: left;
+            border: 1px solid #000;
+        }
+        .container{
+            width: 100%;
+            height: 520px;
+            float: left;
+            background: gray;
+            position: relative;
+        }
+        .content{
+            padding: 50px;
+            box-sizing: border-box;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        .dis{
+            display: none;
+        }
+        .show{
+            display: block;
+        }
+        .bg{
+            background-color:blue ;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <ul>
+            <li class="btn bg">001</li>
+            <li class="btn">002</li>
+            <li class="btn">003</li>
+        </ul>
+        <div class="container">
+            <p class="content0">光标移上时，切换标签页。标签页及标签页内容随意光标移上时，切换标签页。标签页及标签页内容随意
+                111111111111111
+            </p>
+            <p class="content1 dis">光标移上时，切换标签页。标签页及标签页内容随意光标移上时，切换标签页。标签页及标签页内容随意
+                2222222222222222
+            </p>
+            <p class="content2 dis">光标移上时，切换标签页。标签页及标签页内容随意光标移上时，切换标签页。标签页及标签页内容随意
+                3333333333333333
+            </p>
+        </div>
+    </div>
+    <script>
+        let lis = document.querySelectorAll('li');
+        for(let i = 0;i<lis.length; i ++){
+            lis[i].onmouseenter = function(){
+                let content = document.querySelector(`.content${i}`);
+                let content0 = document.querySelector(`.content0`)
+                console.log(content)
+                if(lis[0]){
+                    lis[0].classList.remove(`bg`);
+                    content0.classList.add(`dis`);
+                }
+                content.classList.add(`show`);
+                lis[i].classList.add(`bg`)
+            }
+            lis[i].onmouseout = function(){
+                let content0 = document.querySelector(`.content0`)
+                let content = document.querySelector(`.content${i}`);
+                console.log(content)
+                content.classList.remove(`show`);
+                content.classList.add(`dis`);
+                lis[i].classList.remove(`bg`)
+                if(lis[0]){
+                    lis[0].classList.add(`bg`);
+                    content0.classList.remove(`dis`);
+                }
+
+            }
+
+        }
+    </script>
+</body>
+</html>
