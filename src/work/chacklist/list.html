@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0;
+            padding: 0;
+
+        }
+        ul li{
+            list-style: none;
+        }
+        .box{
+            height: 500px;
+            width: 800px;
+            background-color: #f1f1f1;
+            border-radius: 30px;
+        }
+        ul{
+            margin: 0 auto;
+            width: 98%;
+            height: 80px;
+            background: #f6f6f6;
+            border: 1px solid gray;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        li{
+            width: 100px;
+            height: 60px;
+            float: left;
+            margin:20px 10px 0 5px;
+            line-height: 60px;
+            text-align: center;
+            background: #f0f0f0;
+            border-radius: 5px;
+            border: 1px solid #000;
+            cursor: pointer;
+        }
+        .bg{
+            background-color: blue;
+        }
+        p{
+            margin:10px auto;
+            display: none;
+        }
+        .show{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <ul class="list">
+            <li class="bg">text1</li>
+            <li>text2</li>
+            <li>text3</li>
+        </ul>
+        <p class="show">
+            111
+        </p>
+        <p>
+            222
+        </p>
+        <p>
+            333
+        </p>
+    </div>
+    <script>
+        var lis = document.querySelectorAll('li');
+        var ps = document.querySelectorAll('p')
+        for(let i = 0;i<lis.length;i++){
+            lis[i].onmouseenter = function(){
+                document.querySelector(`.bg`).className = ''
+                this.className = `bg`;
+                for(let j=0;j<=i;j++){
+                    document.querySelector(`.show`).className = ``
+                    ps[j].className = 'show'
+                }
+            }
+        }
+    </script>
+</body>
+</html>

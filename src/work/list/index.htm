@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		section{
+			position: absolute;
+		}
+		h5{
+			width: 498px;
+			height: 30px;
+			border: 1px solid #000;
+			border-radius: 3px;
+			background: #f1f1f1;
+			line-height: 30px;
+		}
+		p{	
+			width: 500px;
+			overflow: hidden;
+			height: 0;
+			background-color: gray;
+			transition: all .3s;
+		}
+		.show{
+			height:300px ;
+		}
+		.hbg{
+			background-color:blue;
+		}
+		span{
+			margin-left: 5px;
+			border-right:5px solid transparent;	
+			border-top:5px solid transparent;	
+			border-bottom:5px solid transparent;	
+			border-left:5px solid black;
+			display: inline-block;
+
+		}
+		.a{
+			border-right:5px solid transparent;	
+			border-top:5px solid black;	
+			border-bottom:5px solid transparent;	
+			border-left:5px solid transparent;
+			display: inline-block;
+			transition: all 0.5s;
+		}
+	</style>
+</head>
+<body>
+	<section>
+		<div class="container">
+			<h5 class="hbg"> 
+				<span class='a'></span> list1</h5>
+			<p class="show">内容111111内容111111内容111111内容111111内容111111内容111111</p>
+		</div>
+		<div class="container">
+			<h5> <span></span>list2</h5>
+			<p>内容222222内容222222内容222222内容222222内容222222内容222222</p>
+		</div>
+		<div class="container">
+			<h5> <span></span>list3</h5>
+			<p>内容333333内容333333内容333333内容333333内容333333内容333333</p>
+		</div>
+		<div class="container">
+			<h5> <span></span>list4</h5>
+			<p>内容444444内容444444内容444444内容444444内容444444内容444444</p>
+		</div>
+	</section>
+	<script>
+		let ps = document.querySelectorAll('p');
+		let hs = document.querySelectorAll('h5');
+		let spans = document.querySelectorAll('span')
+		for(let i=0;i<ps.length;i++){
+			hs[i].onclick = function(){
+			document.querySelector(`.hbg`).className = ``
+			hs[i].className = 'hbg';
+
+			document.querySelector('.a').className = ``
+			spans[i].className = 'a';
+			
+				for(let j = 0;j<=i;j++){
+					document.querySelector(`.show`).className = '';
+					ps[j].className = `show` 
+				}
+			}
+		}
+	</script>
+</body>
+</html>

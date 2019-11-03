@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        section {
+            height: 800px;
+            width: 800px;
+            background-color: #f1f1f1;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 20px;
+            border: 1px solid #000;
+            overflow: hidden;
+            padding-top: 20px;
+        }
+
+        .start {
+            height: 30px;
+            width: 150px;
+            border-radius: 5px;
+            border: 1px solid #000;
+            margin-left: 20px;
+            margin-top: 30px;
+            font-size: 18px;
+            line-height: 30px;
+        }
+
+        .loadwindow {
+            width: 300px;
+            height: 300px;
+            border-radius: 10px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border: 1px solid #000;
+            border-radius: 10px;
+            box-shadow: 2px 2px 10px;
+            padding: 3px;
+        }
+
+        .dis {
+            display: none;
+        }
+
+        .loadwindow h5 {
+            height: 30px;
+            background-color: gray;
+            border-radius: 10px;
+            margin: 0 auto;
+            text-indent: 2em;
+            line-height: 30px;
+            font-size: 18px;
+        }
+
+        .loadwindow p {
+            height: 50px;
+            font-size: 18px;
+            line-height: 50px;
+            text-indent: 1em;
+        }
+
+        .progressbox {
+            width: 200px;
+            height: 50px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: green;
+            clear: both;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .box {
+            height: 150px;
+        }
+
+        .close {
+            height: 40px;
+            width: 150px;
+            border: 1px solid #000;
+            border-radius: 10px;
+            position: absolute;
+            bottom: 5px;
+            right: 5px;
+            font-size: 16px;
+        }
+
+        .box .progressbox .progress {
+            background: blue;
+            width: 0;
+        }
+
+        .progress {}
+    </style>
+</head>
+
+<body>
+    <section>
+        <hr>
+        <button class="start">Start Download</button>
+
+        <div class="loadwindow dis">
+        </div>
+    </section>
+    <script>
+        let box = document.querySelector(`.loadwindow`);
+        let startBtn = document.querySelector('.start');
+        startBtn.onclick = function () {
+            box.innerHTML = `
+            <h5>File Download</h5>
+            <p class="text">Starting download...</p>
+            <div class="box">
+                <div class="progressbox">
+                    <p class="progress"></p>
+                </div>
+            </div>
+            <hr>
+            <button class="close">Cancel Download</button>
+
+            `
+            let loadwindow = document.querySelector('.loadwindow');
+            let close = document.querySelector('.close')
+            loadwindow.classList.remove('dis');
+            let progress = document.querySelector('.progress');
+            startBtn.style.color = 'gray';
+            startBtn.innerHTML = `Downloading...`;
+            let begin = setTimeout(function () {
+                let num = 0;
+                clearTimeout(begin);
+                let text = document.querySelector('.text');
+                var id = setInterval(function () {
+                    num++
+                    text.innerHTML = `Current progress:${num}%`
+                    if(num == 100){
+                        num = 100
+                        clearInterval(id);
+                        text.innerHTML = `Complete!!`;
+                        close.innerHTML = `Close`
+                    }
+                    progress.style.width = `${num}%`;
+                },10);
+            }, 2000);
+            close.onclick = function(){
+                box.innerHTML = ``
+                    loadwindow.classList.add('dis');
+                    clearTimeout(begin);
+                    // num = 0;
+                    startBtn.innerHTML = `Start Download`;
+                    startBtn.style.color = `black`
+            }
+
+        }
+    </script>
+</body>
+
+</html>

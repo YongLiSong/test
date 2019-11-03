@@ -83,19 +83,19 @@
                 content.classList.add(`show`);
                 lis[i].classList.add(`bg`)
             }
-            lis[i].onmouseout = function(){
-                let content0 = document.querySelector(`.content0`)
-                let content = document.querySelector(`.content${i}`);
-                console.log(content)
-                content.classList.remove(`show`);
-                content.classList.add(`dis`);
-                lis[i].classList.remove(`bg`)
-                if(lis[0]){
-                    lis[0].classList.add(`bg`);
-                    content0.classList.remove(`dis`);
-                }
+            // lis[i].onmouseout = function(){
+            //     let content0 = document.querySelector(`.content0`)
+            //     let content = document.querySelector(`.content${i}`);
+            //     console.log(content)
+            //     content.classList.remove(`show`);
+            //     content.classList.add(`dis`);
+            //     lis[i].classList.remove(`bg`)
+            //     if(lis[0]){
+            //         lis[0].classList.add(`bg`);
+            //         content0.classList.remove(`dis`);
+            //     }
 
-            }
+            // }
 
         }
     </script>
