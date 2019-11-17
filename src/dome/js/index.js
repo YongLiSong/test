@@ -54,6 +54,8 @@ Http.get(url)
 
 
 $('.btn').on('click', function () {
+    $('.panel').children().remove()
+
 
     var $id = $('.id').val() ? 'id=' + $('.id').val() : "";
     var $username = $('.username').val() ? '&username=' + $('.username').val() : "";
@@ -74,22 +76,35 @@ $('.reset').on('click', () => {
 function searchData(data) {
     if (data) {
         data.forEach((elemt, i) => {
-            console.log(data)
+            
             var { id, username, phone } = elemt;
             var companyname = elemt.company.name
-            $(".infoList").append($(`
+            $(".panel").append($(`
+            <table class="table">
+            <thead>
+            <tr>
+                <td>ID</td>
+                <td>USER NAME</td>
+                <td>PHONE</td>
+                <td>COMPENY</td>
+            </tr>
+            </thead>
+
+            <tbody class="infoList">
                 <tr >
                     <td>${id}</td>
                     <td>${username}</td>
                     <td>${phone}</td>
                     <td>${companyname}</td>
                 </tr>
+                </tbody>
+                </table>
             `))
         })
-        
-        $('.infoList>tr').on("click",function(){
-            data.forEach((elemt,i)=>{
-                var { id, username, phone,name } = elemt;
+
+        $('.infoList>tr').on("click", function () {
+            data.forEach((elemt, i) => {
+                var { id, username, phone, name } = elemt;
                 var companyname = elemt.company.name
                 $(".infoBox").append(`
                 <div class="row">
@@ -117,11 +132,11 @@ function searchData(data) {
             })
             $('.infoBox').removeClass('dis');
         })
-        $(".infoBox").on("click",function(evt){
+        $(".infoBox").on("click", function (evt) {
             let btn = evt.target;
-                if(btn.className == "btn btn-primary"){
-                    $(this).addClass('dis')
-                }
+            if (btn.className == "btn btn-primary") {
+                $(this).addClass('dis')
+            }
         })
     }
 }
